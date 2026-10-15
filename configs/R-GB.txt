@@ -1,0 +1,26 @@
+! R-GB (Granite Borough)
+!
+hostname R-GB
+!
+interface FastEthernet0/0
+ ip address 13.5.0.1 255.255.224.0
+!
+interface Serial0/0/0
+ ip address 13.5.43.194 255.255.255.252
+!
+interface Serial0/0/1
+ ip address 13.5.43.205 255.255.255.252
+ no ip split-horizon
+!
+interface Serial0/1/0
+ ip address 13.5.43.201 255.255.255.252
+!
+router rip
+ version 2
+ redistribute static metric 1
+ network 13.0.0.0
+ no auto-summary
+!
+ip route 13.5.43.0 255.255.255.128 Serial0/0/0
+!
+end

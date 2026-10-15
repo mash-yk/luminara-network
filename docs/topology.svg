@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="840" height="520" viewBox="0 0 840 520" font-family="Arial, Helvetica, sans-serif">
+  <title>LUMINARA network topology</title>
+  <rect width="840" height="520" fill="#ffffff"/>
+
+  <!-- links -->
+  <g stroke="#1B2A4A" stroke-width="2" fill="none">
+    <line x1="210" y1="80" x2="300" y2="80"/>      <!-- H: PC-FR -->
+    <line x1="400" y1="110" x2="400" y2="210"/>    <!-- G: PC-GB -->
+    <line x1="500" y1="240" x2="620" y2="240"/>    <!-- J: GB-CI -->
+    <line x1="400" y1="270" x2="400" y2="370"/>    <!-- I: GB-AR -->
+    <line x1="720" y1="270" x2="720" y2="370"/>    <!-- K: CI-SP -->
+    <line x1="500" y1="400" x2="620" y2="400" stroke-dasharray="7 5"/> <!-- L: SP-AR (floating backup path) -->
+  </g>
+  <line x1="500" y1="80" x2="610" y2="80" stroke="#8A94A6" stroke-width="1.5" stroke-dasharray="3 4"/>
+
+  <!-- link labels -->
+  <g font-size="11" fill="#4A4A4A">
+    <text x="255" y="70" text-anchor="middle">13.5.43.196/30</text>
+    <text x="392" y="156" text-anchor="end">13.5.43.192/30</text>
+    <text x="392" y="171" text-anchor="end">static, exit interface</text>
+    <text x="560" y="232" text-anchor="middle">13.5.43.204/30</text>
+    <text x="392" y="316" text-anchor="end">13.5.43.200/30</text>
+    <text x="712" y="316" text-anchor="end">13.5.43.208/30</text>
+    <text x="712" y="331" text-anchor="end">primary SP → GB</text>
+    <text x="560" y="392" text-anchor="middle">13.5.43.212/30</text>
+    <text x="560" y="420" text-anchor="middle">floating static</text>
+    <text x="560" y="434" text-anchor="middle">(AD 5)</text>
+  </g>
+
+  <!-- routers -->
+  <g font-size="13">
+    <g>
+      <rect x="10" y="50" width="200" height="60" rx="8" fill="#E8EEF7" stroke="#1B2A4A" stroke-width="1.5"/>
+      <text x="110" y="74" text-anchor="middle" font-weight="bold" fill="#1B2A4A">R-FR · Frostfield Ranch</text>
+      <text x="110" y="94" text-anchor="middle" font-size="11.5" fill="#333">13.5.40.0/23 · 350 hosts · DHCP</text>
+    </g>
+    <g>
+      <rect x="300" y="50" width="200" height="60" rx="8" fill="#1B2A4A" stroke="#1B2A4A" stroke-width="1.5"/>
+      <text x="400" y="74" text-anchor="middle" font-weight="bold" fill="#ffffff">R-PC · Photon Cove (root)</text>
+      <text x="400" y="94" text-anchor="middle" font-size="11.5" fill="#DCE3EE">13.5.43.0/25 · 80 hosts</text>
+    </g>
+    <g>
+      <rect x="300" y="210" width="200" height="60" rx="8" fill="#E8EEF7" stroke="#1B2A4A" stroke-width="1.5"/>
+      <text x="400" y="234" text-anchor="middle" font-weight="bold" fill="#1B2A4A">R-GB · Granite Borough</text>
+      <text x="400" y="254" text-anchor="middle" font-size="11.5" fill="#333">13.5.0.0/19 · 5,200 hosts</text>
+    </g>
+    <g>
+      <rect x="620" y="210" width="200" height="60" rx="8" fill="#E8EEF7" stroke="#1B2A4A" stroke-width="1.5"/>
+      <text x="720" y="234" text-anchor="middle" font-weight="bold" fill="#1B2A4A">R-CI · Corsair Isles</text>
+      <text x="720" y="254" text-anchor="middle" font-size="11.5" fill="#333">13.5.32.0/21 · 1,200 hosts</text>
+    </g>
+    <g>
+      <rect x="300" y="370" width="200" height="60" rx="8" fill="#E8EEF7" stroke="#1B2A4A" stroke-width="1.5"/>
+      <text x="400" y="394" text-anchor="middle" font-weight="bold" fill="#1B2A4A">R-AR · Aurora Ridge</text>
+      <text x="400" y="414" text-anchor="middle" font-size="11.5" fill="#333">13.5.42.0/24 · 150 hosts · DHCP</text>
+    </g>
+    <g>
+      <rect x="620" y="370" width="200" height="60" rx="8" fill="#E8EEF7" stroke="#1B2A4A" stroke-width="1.5"/>
+      <text x="720" y="394" text-anchor="middle" font-weight="bold" fill="#1B2A4A">R-SP · Sunspire Palace</text>
+      <text x="720" y="414" text-anchor="middle" font-size="11.5" fill="#333">13.5.43.128/26 · 45 hosts</text>
+    </g>
+  </g>
+
+  <!-- servers -->
+  <rect x="610" y="38" width="220" height="84" rx="8" fill="#FFFFFF" stroke="#8A94A6" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <g font-size="11.5" fill="#333">
+    <text x="625" y="58" font-weight="bold" fill="#1B2A4A">Photon Cove servers</text>
+    <text x="625" y="76">Web  13.5.43.2 (www.luminara.net)</text>
+    <text x="625" y="92">Email  13.5.43.3</text>
+    <text x="625" y="108">DNS  13.5.43.4  ·  DHCP  13.5.43.5</text>
+  </g>
+
+  <!-- legend -->
+  <g font-size="11.5" fill="#4A4A4A">
+    <text x="10" y="472">Address block 13.5.0.0/16, split with VLSM. RIPv2 runs on every router; no default routes anywhere.</text>
+    <text x="10" y="490">Static routes: PC ↔ GB (exit interface), PC ↔ SP and SP ↔ AR (recursive); SP → GB primary via CI, floating backup via AR.</text>
+    <text x="10" y="508">Frostfield Ranch and Aurora Ridge get addresses from the Photon Cove DHCP server through ip helper-address.</text>
+  </g>
+</svg>

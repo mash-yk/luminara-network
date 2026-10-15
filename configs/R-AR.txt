@@ -1,0 +1,22 @@
+! R-AR (Aurora Ridge)
+!
+hostname R-AR
+!
+interface FastEthernet0/0
+ ip address 13.5.42.1 255.255.255.0
+ ip helper-address 13.5.43.5
+!
+interface Serial0/0/0
+ ip address 13.5.43.202 255.255.255.252
+!
+interface Serial0/0/1
+ ip address 13.5.43.213 255.255.255.252
+!
+router rip
+ version 2
+ network 13.0.0.0
+ no auto-summary
+!
+ip route 13.5.43.128 255.255.255.192 13.5.43.214
+!
+end

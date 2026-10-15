@@ -1,0 +1,20 @@
+! R-CI (Corsair Isles)
+!
+hostname R-CI
+!
+interface FastEthernet0/0
+ ip address 13.5.32.1 255.255.248.0
+!
+interface Serial0/0/0
+ ip address 13.5.43.209 255.255.255.252
+!
+interface Serial0/0/1
+ ip address 13.5.43.206 255.255.255.252
+ no ip split-horizon
+!
+router rip
+ version 2
+ network 13.0.0.0
+ no auto-summary
+!
+end

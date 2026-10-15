@@ -1,0 +1,24 @@
+! R-SP (Sunspire Palace)
+!
+hostname R-SP
+!
+interface FastEthernet0/0
+ ip address 13.5.43.129 255.255.255.192
+!
+interface Serial0/0/0
+ ip address 13.5.43.210 255.255.255.252
+!
+interface Serial0/0/1
+ ip address 13.5.43.214 255.255.255.252
+!
+router rip
+ version 2
+ network 13.0.0.0
+ no auto-summary
+!
+ip route 13.5.43.0 255.255.255.128 13.5.43.209
+ip route 13.5.0.0 255.255.224.0 13.5.43.209
+ip route 13.5.0.0 255.255.224.0 13.5.43.213 5
+ip route 13.5.42.0 255.255.255.0 13.5.43.213
+!
+end

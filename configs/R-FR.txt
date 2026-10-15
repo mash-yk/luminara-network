@@ -1,0 +1,17 @@
+! R-FR (Frostfield Ranch)
+!
+hostname R-FR
+!
+interface FastEthernet0/0
+ ip address 13.5.40.1 255.255.254.0
+ ip helper-address 13.5.43.5
+!
+interface Serial0/0/0
+ ip address 13.5.43.198 255.255.255.252
+!
+router rip
+ version 2
+ network 13.0.0.0
+ no auto-summary
+!
+end
